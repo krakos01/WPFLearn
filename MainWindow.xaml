@@ -5,40 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tooler"
         mc:Ignorable="d"
-        Title="Tooler" Height="450" Width="800" Foreground="#FF9CC9F1" Background="#FFFBEAD4" WindowState="Normal">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="46*"/>
-            <ColumnDefinition Width="140*"/>
-            <ColumnDefinition Width="430*"/>
-            <ColumnDefinition Width="163*"/>
-            <ColumnDefinition Width="16*"/>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="TagLabel" Content="Tag
-      :" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Left" Foreground="Brown" FontWeight="Bold" Grid.Column="1"/>
-        <TextBlock x:Name="NameBox" HorizontalAlignment="Left" Margin="0,41,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="88" Foreground="Brown" Height="82" Grid.Column="1"/>
-        <Button x:Name="SexyButton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,200,0,0" Grid.Column="3" MouseDoubleClick="SexyButton_MouseDoubleClick" MouseEnter="SexyButton_MouseEnter" Click="SexyButton_Click">
-            <Button.Content>
-                <WrapPanel>
-                    <TextBlock Foreground="CadetBlue">I'm a</TextBlock>
-                    <TextBlock Foreground="Crimson">sexy</TextBlock>
-                    <TextBlock Foreground="CadetBlue">button</TextBlock>
-                </WrapPanel>
-            </Button.Content>
-        </Button>
-        <Button x:Name="GBTN_button" Grid.Column="3" Content="Get back to normal" HorizontalAlignment="Left" Margin="97,237,0,0" VerticalAlignment="Top" Width="126" IsEnabled="False" RenderTransformOrigin="0.5,0.5"  Click="GBTN_button_Click"    >
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.524"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-            <Button.Background>
-                <SolidColorBrush Color="#FF65EF28" Opacity="0"/>
-            </Button.Background>
-        </Button>
+        Title="Tooler" Height="207" Width="297" Foreground="MintCream" Background="Black" WindowState="Normal">
+    <Grid Background="DarkOliveGreen">
+        <WrapPanel>
+            <Button Name="LIB" Height="15px" Width="40px" FontSize="7px" Background="Black" Foreground="MintCream" BorderBrush="MintCream" Margin="10px" Click="LIB_Click">LoadImage</Button>
+            <Button Click="LIB_Click2">
+                <Image Name="imgimg" Height="200" Width="200"/>
+            </Button>
+
+        </WrapPanel>
     </Grid>
 </Window>

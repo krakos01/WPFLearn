@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,33 +29,28 @@ namespace Tooler
         }
 
 
-
-        private void SexyButton_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void LIB_Click(object sender, RoutedEventArgs e)
         {
-            NameBox.Text = "wracam do normy...";
-        }
-
-
-        static int ile = 0;
-        private void SexyButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (ile < 4)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if(openFileDialog.ShowDialog()==true)
             {
-                ile++;
-                MessageBox.Show("MAMMA MIA " + ile + " " + e.GetPosition(this));
-                NameBox.Text = "oh yah, more daddy";
+                Uri uri = new Uri(openFileDialog.FileName);
+                imgimg.Source = new BitmapImage(uri);
             }
         }
 
-        private void SexyButton_Click(object sender, RoutedEventArgs e)
+        private void LIB_Click2(object sender, RoutedEventArgs e)
         {
-            NameBox.Text = "I'm clicked...\nI'M CLICKED!!!!!!!!!!!!!!!";
-            GBTN_button.IsEnabled = true;
-        }
-
-        private void GBTN_button_Click(object sender, RoutedEventArgs e)
-        {
-            NameBox.Text = string.Empty;
+            if (imgimg.Height != ActualHeight)
+            {
+                imgimg.Height = ActualHeight;
+                imgimg.Width = ActualWidth;
+            }
+            else
+            {
+                imgimg.Height = 200;
+                imgimg.Width = 200;
+            }
         }
     }
 }
