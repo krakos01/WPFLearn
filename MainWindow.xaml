@@ -5,14 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tooler"
         mc:Ignorable="d"
-        Title="Tooler" Height="207" Width="297" Foreground="MintCream" Background="Black" WindowState="Normal">
-    <Grid Background="DarkOliveGreen">
-        <WrapPanel>
-            <Button Name="LIB" Height="15px" Width="40px" FontSize="7px" Background="Black" Foreground="MintCream" BorderBrush="MintCream" Margin="10px" Click="LIB_Click">LoadImage</Button>
-            <Button Click="LIB_Click2">
-                <Image Name="imgimg" Height="200" Width="200"/>
-            </Button>
-
+        Title="Tooler" Height="500" Width="600" Foreground="MintCream" Background="Black" WindowState="Normal">
+    <Grid Background="LightSteelBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Name="NameLabel" Foreground="Black" FontSize="10" TextWrapping="Wrap"/>
+        <WrapPanel Grid.Column="0" Grid.Row="1">
+            <Label Name="nameLabel" Foreground="Black" FontSize="16" Target="{Binding ElementName=FNBox}">_First name:</Label>
+            <TextBox Name="FNBox" Width="140" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </WrapPanel>
+        <Button Grid.Column="1" Grid.Row="0" Name="LIB" Height="30px" Width="100px" FontSize="18" Background="Black" Foreground="Wheat" BorderBrush="Wheat" Click="LIB_Click">_LoadImage</Button>
+        <Button Click="LIB_Click2" Grid.Column="1" Grid.Row="1" Margin="5">
+            <Image Name="imgimg" Height="400" Width="400"/>
+        </Button>
     </Grid>
 </Window>

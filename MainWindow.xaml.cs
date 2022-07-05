@@ -36,6 +36,8 @@ namespace Tooler
             {
                 Uri uri = new Uri(openFileDialog.FileName);
                 imgimg.Source = new BitmapImage(uri);
+
+                NameLabel.Text = uri.ToString();
             }
         }
 
@@ -48,8 +50,8 @@ namespace Tooler
             }
             else
             {
-                imgimg.Height = 200;
-                imgimg.Width = 200;
+                imgimg.Height = 400;
+                imgimg.Width = 400;
             }
         }
     }
