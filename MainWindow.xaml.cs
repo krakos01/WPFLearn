@@ -15,44 +15,50 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Tooler
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
 
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
 
-        private void LIB_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if(openFileDialog.ShowDialog()==true)
-            {
-                Uri uri = new Uri(openFileDialog.FileName);
-                imgimg.Source = new BitmapImage(uri);
+		public class YesNoToBooleanConverter : IValueConverter
+		{
+			public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+			{
+				switch (value.ToString().ToLower())
+				{
+					case "yes":
+					case "oui":
+						return true;
+					case "no":
+					case "non":
+						return false;
+				}
+				return false;
+			}
 
-                NameLabel.Text = uri.ToString();
-            }
-        }
+			public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+			{
+				if (value is bool)
+				{
+					if ((bool)value == true)
+						return "yes";
+					else
+						return "no";
+				}
+				return "no";
+			}
+		}
 
-        private void LIB_Click2(object sender, RoutedEventArgs e)
-        {
-            if (imgimg.Height != ActualHeight)
-            {
-                imgimg.Height = ActualHeight;
-                imgimg.Width = ActualWidth;
-            }
-            else
-            {
-                imgimg.Height = 400;
-                imgimg.Width = 400;
-            }
-        }
-    }
+	}
 }
