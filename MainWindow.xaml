@@ -3,16 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Tooler"
         Title="Tooler" Height="130" Width="280">
-    <Window.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Copy" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"/>
-        <CommandBinding Command="ApplicationCommands.Cut" CanExecute="CutCommand_CanExecute" Executed="CutCommand_Executed" />
-    </Window.CommandBindings>
-    <DockPanel>
-        <WrapPanel DockPanel.Dock="Top" Margin="3" Background="Black">
-            <Button Command="ApplicationCommands.Cut" Width="60">_Cut</Button>
-            <Button Command="ApplicationCommands.Paste" Width="60" Margin="3,0" CommandTarget="{Binding ElementName=txtEditor}">_Paste</Button>
-            <Button Command="ApplicationCommands.Copy" Width="60"  Foreground="Black" BorderBrush="Red" Background="#FFFF0D0D">Copy</Button>
+    <DockPanel Margin="10">
+        <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,0,0,10">
+            <Button Name="btnOpenFile" Click="btnOpenFiles_Click">Open files</Button>
         </WrapPanel>
-        <TextBox AcceptsReturn="True" Name="txtEditor" />
+        <ListBox Name="lbFiles" />
     </DockPanel>
 </Window>
