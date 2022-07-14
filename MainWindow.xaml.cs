@@ -31,34 +31,24 @@ namespace Tooler
 			InitializeComponent();
 		}
 
-		public class YesNoToBooleanConverter : IValueConverter
+		private void CutCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
 		{
-			public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-			{
-				switch (value.ToString().ToLower())
-				{
-					case "yes":
-					case "oui":
-						return true;
-					case "no":
-					case "non":
-						return false;
-				}
-				return false;
-			}
-
-			public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-			{
-				if (value is bool)
-				{
-					if ((bool)value == true)
-						return "yes";
-					else
-						return "no";
-				}
-				return "no";
-			}
+			e.CanExecute = (txtEditor != null) && (txtEditor.SelectionLength > 0);
 		}
 
-	}
+		private void CutCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+		{
+			txtEditor.Cut();
+		}
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+			e.CanExecute = (txtEditor != null) && (txtEditor.SelectionLength > 0);
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+			txtEditor.Copy();
+        }
+    }
 }

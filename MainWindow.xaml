@@ -3,15 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Tooler"
         Title="Tooler" Height="130" Width="280">
-    <Window.Resources>
-        <local:YesNoToBooleanConverter x:Key="YesNoToBooleanConverter" />
-    </Window.Resources>
-    <StackPanel Margin="10">
-        <TextBox Name="txtValue" />
-        <WrapPanel Margin="0,10">
-            <TextBlock Text="Current value is: " />
-            <TextBlock Text="{Binding ElementName=txtValue, Path=Text, Converter={StaticResource YesNoToBooleanConverter}}"></TextBlock>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Copy" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Cut" CanExecute="CutCommand_CanExecute" Executed="CutCommand_Executed" />
+    </Window.CommandBindings>
+    <DockPanel>
+        <WrapPanel DockPanel.Dock="Top" Margin="3" Background="Black">
+            <Button Command="ApplicationCommands.Cut" Width="60">_Cut</Button>
+            <Button Command="ApplicationCommands.Paste" Width="60" Margin="3,0" CommandTarget="{Binding ElementName=txtEditor}">_Paste</Button>
+            <Button Command="ApplicationCommands.Copy" Width="60"  Foreground="Black" BorderBrush="Red" Background="#FFFF0D0D">Copy</Button>
         </WrapPanel>
-        <CheckBox IsChecked="{Binding ElementName=txtValue, Path=Text, Converter={StaticResource YesNoToBooleanConverter}}" Content="Yes" />
-    </StackPanel>
+        <TextBox AcceptsReturn="True" Name="txtEditor" />
+    </DockPanel>
 </Window>
