@@ -31,17 +31,13 @@ namespace Tooler
 			InitializeComponent();
 		}
 
-		private void btnOpenFiles_Click(object sender, RoutedEventArgs e)
+		private void txtEditor_SelectionChanged(object sender, RoutedEventArgs e)
 		{
-			OpenFileDialog openFileDialog = new OpenFileDialog();
-			openFileDialog.Multiselect = true;
-			openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-			openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			if (openFileDialog.ShowDialog() == true)
-			{
-				foreach (string filename in openFileDialog.FileNames)
-					lbFiles.Items.Add(Path.GetFileName(filename));
-			}
+			int row = txtEditor.GetLineIndexFromCharacterIndex(txtEditor.CaretIndex);
+			int col = txtEditor.CaretIndex - txtEditor.GetCharacterIndexFromLineIndex(row);
+			lblCursorPosition.Text = "Line " + (row + 1) + ", Char " + (col + 1);
+			
+			Path.Text = DateTime.Now.ToString();
 		}
 	}
 }
