@@ -1,21 +1,27 @@
 ﻿<Window x:Class="Tooler.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:Tooler"
-        Title="Tooler" Height="200" Width="400">
+        Title="Tooler" Height="300" Width="400">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" />
+        <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed" />
+    </Window.CommandBindings>
     <DockPanel>
-        <WrapPanel DockPanel.Dock="Top">
-            <Button Name="btnGetText" Click="btnGetText_Click">Get text</Button>
-            <Button Name="btnSetText" Click="btnSetText_Click">Set text</Button>
-            <Button Name="btnGetSelectedText" Click="btnGetSelectedText_Click">Get sel. text</Button>
-            <Button Name="btnSetSelectedText" Click="btnSetSelectedText_Click">Replace sel. text</Button>
-        </WrapPanel>
-        <TextBox DockPanel.Dock="Bottom" Name="txtStatus" />
-        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged">
-            <FlowDocument>
-                <Paragraph FontSize="36">Hello, world!</Paragraph>
-                <Paragraph FontStyle="Italic" TextAlignment="Left" FontSize="14" Foreground="Gray">Thanks to the RichTextBox control, this FlowDocument is completely editable!</Paragraph>
-            </FlowDocument>
-        </RichTextBox>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Command="ApplicationCommands.Open" Foreground="Orange">Open</Button>
+            <Button Command="ApplicationCommands.Save" Foreground="Red">Save</Button>
+            <Separator/>
+
+            <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold" Content="B" FontWeight="Bold" Foreground="Black" Width="16"/>
+            <ToggleButton Command="EditingCommands.ToggleItalic" Name="btnItalic" Content="I" FontStyle="Italic" Foreground="Black" Width="16"/>
+            <ToggleButton Command="EditingCommands.ToggleUnderline" Name="btnUnderline" Content="U" Foreground="Black" Width="16"/>
+            <Separator/>
+
+            <ComboBox Name="cbFontFamily" Width="150"  SelectionChanged="cbFontFamily_SelectionChanged" Margin="0,0,5,0"/>
+            <ComboBox Name="cbFontSize" Width="50" IsEditable="True" TextBoxBase.TextChanged="cbFontSize_TextChanged"/>
+        </ToolBar>
+        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged_1"/>
     </DockPanel>
+   
+
 </Window>
